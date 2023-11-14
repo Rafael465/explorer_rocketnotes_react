@@ -17,15 +17,14 @@ export function Profile() {
     const [passwordOld, setPasswordOld] = useState();
     const [passwordNew, setPasswordNew] = useState();
 
-    async function handleUpdate(){
+    async function handleUpdate() {
         const user = {
             name,
             email,
             password: passwordNew,
-            password: passwordOld,
+            old_password: passwordOld
         }
         await updateProfile({ user });
-
     }
 
     return (
@@ -78,14 +77,13 @@ export function Profile() {
 
                 <Input 
                     placeholder="Nova senha"
-                    type="text"
+                    type="password"
                     icon={FiLock}
                     onChange={e => setPasswordNew(e.target.value)}
 
                 />
 
                 <Button title="Salvar" onClick={handleUpdate} />
-
             </Form>
         </Container>
     )
